@@ -1,0 +1,46 @@
+#include <iostream>
+#include <windows.h>
+#include <cstdlib>
+using namespace std;
+
+// Atributos de la clase Persona
+class Heroe {
+    // los atributos de la clase Persona son privados, no pueden ser accedidos desde fuera de la clase.
+    // Los atributos indican CÓMO es la clase Persona.
+    private:
+        string name;
+        int vida;  
+        bool vivo;
+        int danio;
+    
+    public: 
+
+        Heroe(string nameJugador, int vidaJugador, bool estaVivo, int danioJugador) :
+            name(nameJugador), vida(vidaJugador), vivo(true), danio(danioJugador){}
+        
+        void avanzar(string nameJugador){
+            cout << nameJugador<< " avanza..." << endl;}
+        void saltar(string nameJugador){
+            cout << nameJugador<< " salta..." << endl;}
+        void recibirDanio(string nameJugador, int danio){
+            vida -= danio;
+
+         if (vida < 0) {
+            vida = 0;
+            vivo = false;
+            }
+
+            cout << nameJugador<<  "recibió " << danio  << " de daño." << endl;
+            cout << "Su vida restante es " << vida << "." << endl;}
+    
+        void verEstado(string nameJugador){
+            string alerta = "";
+            if (vida > 0 && vida < 30) alerta = "Vida demasiado baja!";
+
+            cout << "Estado de "<< nameJugador << endl;
+            cout << "Vida restante: " << vida << endl;
+            cout << "Está Vivo? " << (vivo ? "Si" : "No") << endl;
+            cout << alerta << endl;
+            }
+
+        };
